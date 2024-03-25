@@ -11,9 +11,14 @@
     <script>
         var socket = io();
 
+        socket.on('active-bands', function(bands){
+            console.log(bands);
+        });
+
         socket.on('connect', function(){
         console.log('coneted to the server');
         });
+        
 
         socket.on('disconnect', function(){
         console.log('we lost comunication with the server');
@@ -24,6 +29,19 @@
         socket.on('message',function(payload){
             console.log('socket listen ', payload);
         });
+
+        socket.on('emit', function(payload){
+            
+            console.log('from flutter', payload);
+            // console.log(payload);
+        });
+        socket.emit('emit', {'mesage1': payload});
+
+      
+
+      
+
+        
     </script>
 </body>
 </html>
